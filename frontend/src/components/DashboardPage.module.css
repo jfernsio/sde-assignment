@@ -1,0 +1,293 @@
+.container {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.container h2 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-navy);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-xl);
+}
+
+.refreshBtn {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-navy);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.refreshBtn:hover {
+  background-color: var(--color-dark-navy);
+  transform: translateY(-1px);
+}
+
+.loading {
+  padding: var(--spacing-2xl);
+  text-align: center;
+  color: var(--color-gray);
+  margin: 0;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: rgba(220, 38, 38, 0.1);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  color: var(--color-danger);
+  font-weight: 500;
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Score Card */
+.scoreCard {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--spacing-xl);
+  align-items: center;
+  background: linear-gradient(135deg, var(--color-ivory) 0%, var(--color-ivory-dark) 100%);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-ivory-dark);
+  margin-bottom: var(--spacing-2xl);
+  box-shadow: var(--shadow-md);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.scoreContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.scoreLabel {
+  font-size: 0.95rem;
+  color: var(--color-gray);
+  font-weight: 500;
+  margin: 0;
+}
+
+.scoreValue {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.scoreBar {
+  width: 100%;
+  height: 12px;
+  background-color: var(--color-slate);
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.scoreBarFill {
+  height: 100%;
+  transition: width 0.5s ease-out;
+}
+
+.scoreIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  animation: slideInLeft 0.6s ease-out 0.2s backwards;
+}
+
+/* Metrics Grid */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.metricCard {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  background-color: var(--color-ivory);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-ivory-dark);
+  transition: all 0.2s ease;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.metricCard:hover {
+  border-color: var(--color-info);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.metricIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metricContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.metricLabel {
+  font-size: 0.85rem;
+  color: var(--color-gray);
+  font-weight: 500;
+  margin: 0;
+}
+
+.metricValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+/* Ships Section */
+.shipsSection h3 {
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-lg);
+}
+
+.empty {
+  text-align: center;
+  color: var(--color-gray);
+  padding: var(--spacing-xl);
+  margin: 0;
+}
+
+.shipsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.shipCard {
+  background-color: var(--color-ivory);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-ivory-dark);
+  transition: all 0.2s ease;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.shipCard:hover {
+  border-color: var(--color-info);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.shipHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-md);
+}
+
+.shipHeader h4 {
+  margin: 0;
+  color: var(--color-navy);
+  font-size: 1.1rem;
+}
+
+.shipScore {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.shipScoreBar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-slate);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-lg);
+}
+
+.shipScoreFill {
+  height: 100%;
+  transition: width 0.5s ease-out;
+}
+
+.shipStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid var(--color-ivory-dark);
+  border-bottom: 1px solid var(--color-ivory-dark);
+  margin-bottom: var(--spacing-md);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: var(--color-gray);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-xs);
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.lastUpdated {
+  font-size: 0.8rem;
+  color: var(--color-gray);
+  margin: 0;
+  text-align: right;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .scoreCard {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .scoreIcon {
+    justify-self: start;
+  }
+
+  .scoreValue {
+    font-size: 2rem;
+  }
+
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .shipsList {
+    grid-template-columns: 1fr;
+  }
+}
