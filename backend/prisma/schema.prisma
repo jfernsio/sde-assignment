@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    Int       @id @default(autoincrement())
+  email                 String    @unique
+  password              String
+  role                  UserRole  @default(CREW)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  // Relations
+  maintenanceTasksCreated  MaintenanceTask[]
+  safetyDrillsCreated      SafetyDrill[]
+  drillAttendances         DrillAttendance[]
+
+  @@map("users")
+}
+
+model Ship {
+  id          Int       @id @default(autoincrement())
+  name        String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  maintenanceTasks  MaintenanceTask[]
+  safetyDrills      SafetyDrill[]
+
+  @@map("ships")
+}
+
+model MaintenanceTask {
+  id            Int       @id @default(autoincrement())
+  shipId        Int
+  title         String
+  description   String
+  status        TaskStatus  @default(PENDING)
+  dueDate       DateTime
+  completedDate DateTime?
+  createdBy     Int
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  ship          Ship      @relation(fields: [shipId], references: [id], onDelete: Cascade)
+  creator       User      @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+
+  @@index([shipId])
+  @@index([createdBy])
+  @@map("maintenance_tasks")
+}
+
+model SafetyDrill {
+  id            Int       @id @default(autoincrement())
+  shipId        Int
+  title         String
+  description   String
+  scheduledDate DateTime
+  status        DrillStatus @default(SCHEDULED)
+  createdBy     Int
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  ship          Ship      @relation(fields: [shipId], references: [id], onDelete: Cascade)
+  creator       User      @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+  attendance    DrillAttendance[]
+
+  @@index([shipId])
+  @@index([createdBy])
+  @@map("safety_drills")
+}
+
+model DrillAttendance {
+  id        Int       @id @default(autoincrement())
+  drillId   Int
+  crewId    Int
+  attended  Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relations
+  drill     SafetyDrill @relation(fields: [drillId], references: [id], onDelete: Cascade)
+  crew      User        @relation(fields: [crewId], references: [id], onDelete: Cascade)
+
+  @@unique([drillId, crewId])
+  @@index([drillId])
+  @@index([crewId])
+  @@map("drill_attendance")
+}
+
+enum UserRole {
+  ADMIN
+  CREW
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum DrillStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+}
