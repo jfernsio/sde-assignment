@@ -120,9 +120,10 @@ export const getDrill = async (req, res, next) => {
 export const recordAttendance = async (req, res, next) => {
   try {
     const { drillId } = req.params;
-    const { crewId, attended } = req.body;
+    //get crew id from user token
+    const  crewId  =  req.user.id;
+    const { attended } = req.body;
 
-    // Validation
     if (!crewId || attended === undefined) {
       throw new AppError('crewId and attended are required', 400);
     }
