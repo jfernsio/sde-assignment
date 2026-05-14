@@ -102,7 +102,8 @@ export const login = async (req, res, next) => {
       process.env.JWT_SECRET,
       { expiresIn: '24h' }
     );
-
+    res.setHeader('Authorization', `Bearer ${token}`);
+  
     res.status(200).json({
       message: 'Login successful',
       user: {
@@ -113,6 +114,7 @@ export const login = async (req, res, next) => {
       token
     });
   } catch (error) {
-    next(error);
+     console.error('Login error', error);
+     next(error);
   }
 };
