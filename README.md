@@ -10,6 +10,10 @@ A comprehensive REST API for managing maritime operations, including ships, main
 - **Safety Drills**: Schedule and manage safety drills with crew attendance tracking
 - **Compliance Dashboard**: Real-time compliance metrics and risk assessment for all ships
 
+## Preview
+<img width="1288" height="635" alt="image" src="https://github.com/user-attachments/assets/3493b656-97d8-45fe-bf6d-8d389a0e1052" />
+<img width="700" height="612" alt="image" src="https://github.com/user-attachments/assets/849935ae-3bc3-4285-978f-2954f6006e40" />
+
 ## Tech Stack
 
 - **Runtime**: Node.js (v18+)
