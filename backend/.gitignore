@@ -1,2 +1,6 @@
 .env
 node_modules/
+README.md
+QUICK_START.md
+maritime-api.postman_collection.json
+.dockerignore
